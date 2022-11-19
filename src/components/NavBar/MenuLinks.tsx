@@ -1,6 +1,5 @@
 import { Box, Stack } from "@chakra-ui/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 type MenuLinksProps = {
   isOpen: boolean;
@@ -8,7 +7,6 @@ type MenuLinksProps = {
 };
 
 export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
-  const router = useRouter();
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -22,25 +20,13 @@ export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
         pt={[8, 8, 0, 0]}
         fontWeight="normal"
       >
-        <Link href={""} passHref>
-          {" "}
-          <a>Home</a>
-        </Link>
+        <Link href={""}> Home</Link>
 
-        <Link href={""} passHref>
-          {" "}
-          <a>Portfolio</a>
-        </Link>
+        <Link href={""}> Portfolio</Link>
 
-        <Link href={""} passHref>
-          {" "}
-          <a>Stack</a>
-        </Link>
+        <Link href={""}> Stack</Link>
 
-        <Link href={""} passHref>
-          {" "}
-          <a>Blog</a>
-        </Link>
+        <Link href={""}> Blog</Link>
       </Stack>
     </Box>
   );
