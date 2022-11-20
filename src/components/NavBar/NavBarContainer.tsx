@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from "@chakra-ui/react";
+import { Flex, FlexProps, useColorMode } from "@chakra-ui/react";
 
 type NavBarContainerProps = {
   children: React.ReactNode;
@@ -8,9 +8,11 @@ export const NavBarContainer = ({
   children,
   ...props
 }: NavBarContainerProps) => {
+  const { colorMode } = useColorMode();
+
   return (
     <Flex
-      bg={"#272727"}
+      bg={colorMode === "dark" ? "gray.900" : "#FFFF"}
       px="1rem"
       position="sticky"
       w={"full"}
@@ -19,17 +21,14 @@ export const NavBarContainer = ({
       left="0"
     >
       <Flex
-        maxW={{ base: "100%", md: "1500px" }}
+        maxW={{ base: "100%", md: "1200px" }}
         mx="auto"
         as="nav"
         align="center"
         justify="space-between"
         wrap="wrap"
         w="100%"
-        paddingTop={8}
-        paddingBottom={8}
-        paddingRight={8}
-        paddingLeft={{ base: 8, md: 0 }}
+        p="7"
         color={["white", "white", "primary.700", "primary.700"]}
         {...props}
       >

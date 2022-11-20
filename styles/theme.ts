@@ -6,6 +6,11 @@ export const theme: ThemeConfig = extendTheme({
   breakpoints: {
     xx: "1550px",
   },
+  colors: {
+    gray: {
+      900: "#272727",
+    },
+  },
   useSystemColorMode: true,
   components: {},
   styles: {
@@ -15,9 +20,9 @@ export const theme: ThemeConfig = extendTheme({
         padding: "0",
         boxSizing: "border-box",
       },
-      body: {
+      /* body: {
         backgroundColor: "#272727",
-      },
+      }, */
       p: {
         fontFamily: `'Montserrat', sans-serif`,
       },
