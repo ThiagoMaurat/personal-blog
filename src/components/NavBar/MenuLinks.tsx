@@ -1,7 +1,7 @@
-import { Box, Stack, useColorMode, Text } from "@chakra-ui/react";
+import { Box, Stack, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import ToogleButtomDarkMode from "../ToogleButtonDarkMode";
+import styles from "./styles.module.css";
 import { useCallback } from "react";
 
 type MenuLinksProps = {
@@ -11,7 +11,7 @@ type MenuLinksProps = {
 
 export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
   const { colorMode } = useColorMode();
-  const { asPath, push } = useRouter();
+  const { asPath } = useRouter();
 
   const CheckRouterMatchesLabel = useCallback(
     (label: string) => {
@@ -36,6 +36,7 @@ export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={["column", "column", "row", "row"]}
         pt={[8, 8, 0, 0]}
+        w="100%"
         fontWeight="normal"
         color={colorMode === "dark" ? "whiteAlpha.900" : "gray.900"}
       >
@@ -43,29 +44,35 @@ export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
           href={"/"}
           style={
             CheckRouterMatchesLabel("Home")
-              ? { borderBottom: "1px solid red" }
+              ? {
+                  borderBottom: "1px solid #35A5F5",
+                  borderBottomWidth: "3px",
+                  color: "gray.300",
+                  fontWeight: "600",
+                }
               : undefined
           }
+          className={styles.linkMenu}
         >
           Home
         </Link>
-
-        {/* <Link href={""}> Portfolio</Link>
-
-        <Link href={""}> Stack</Link> */}
 
         <Link
           href={"/blog"}
           style={
             CheckRouterMatchesLabel("Blog")
-              ? { borderBottom: "1px solid red" }
+              ? {
+                  borderBottom: "1px solid #35A5F5",
+                  borderBottomWidth: "3px",
+                  color: "gray.300",
+                  fontWeight: "600",
+                }
               : undefined
           }
+          className={styles.linkMenu}
         >
           Blog
         </Link>
-
-        <ToogleButtomDarkMode />
       </Stack>
     </Box>
   );

@@ -1,6 +1,7 @@
-import { Text, FlexProps, useColorMode } from "@chakra-ui/react";
+import { Text, FlexProps, useColorMode, Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import ToogleButtomDarkMode from "../ToogleButtonDarkMode";
 import { MenuLinks } from "./MenuLinks";
 import { MenuToggle } from "./MenuToggle";
 import { NavBarContainer } from "./NavBarContainer";
@@ -24,10 +25,13 @@ export const NavBar = ({ isLoading, ...props }: NavBarProps) => {
         cursor="pointer"
         onClick={() => push("/")}
       >
-        ThiagoDev
+        Thiago🚀Dev
       </Text>
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} />
+      <Box>
+        <ToogleButtomDarkMode />
+      </Box>
     </NavBarContainer>
   );
 };

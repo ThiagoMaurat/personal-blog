@@ -8,7 +8,9 @@ export const theme: ThemeConfig = extendTheme({
   },
   colors: {
     gray: {
-      900: "#272727",
+      300: "#d1d5db",
+      500: "#595B83",
+      900: "#333456",
     },
   },
   useSystemColorMode: true,

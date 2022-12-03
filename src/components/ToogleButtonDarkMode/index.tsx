@@ -1,19 +1,23 @@
-import { BsSunFill, BsFillMoonFill } from "react-icons/bs";
-import { Button, useColorMode } from "@chakra-ui/react";
-import React from "react";
+import { useColorMode } from "@chakra-ui/react";
+import React, { useMemo } from "react";
+import DarkModeToggle from "react-dark-mode-toggle";
 
 export default function ToogleButtomDarkMode() {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const toggleDarkMode = useMemo((): boolean | undefined => {
+    if (colorMode === "light") {
+      return true;
+    } else {
+      return false;
+    }
+  }, [colorMode]);
+
   return (
-    <Button
-      onClick={() => toggleColorMode()}
-      backgroundColor={colorMode === "light" ? "gray.100" : "gray.600"}
-    >
-      {colorMode === "dark" ? (
-        <BsSunFill color={colorMode === "dark" ? "#FFFF" : "#FFFF"} />
-      ) : (
-        <BsFillMoonFill />
-      )}
-    </Button>
+    <DarkModeToggle
+      onChange={toggleColorMode}
+      checked={toggleDarkMode}
+      size={60}
+    />
   );
 }
