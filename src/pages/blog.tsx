@@ -10,16 +10,6 @@ export default function BlogPage() {
     <>
       <Header />
 
-      {/* <AspectRatio
-        w="1039px"
-        h="172px"
-        overflow={"hidden"}
-        backgroundSize={"contain"}
-        m="0 auto"
-      >
-        <Image src="./blog.svg" />
-      </AspectRatio> */}
-
       <Box
         maxW="1200px"
         h="100%"
