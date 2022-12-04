@@ -4,6 +4,7 @@ import {
   InputLeftElement,
   InputProps,
   Stack,
+  useColorMode,
 } from "@chakra-ui/react";
 import React, { ForwardRefRenderFunction } from "react";
 import { BsSearch } from "react-icons/bs";
@@ -16,10 +17,13 @@ const FieldSearchComponent: ForwardRefRenderFunction<
   HTMLInputElement,
   FieldSearchComponentProps
 > = (props, ref) => {
+  const { colorMode } = useColorMode();
+
   return (
     <Stack w="300px">
       <InputGroup>
         <InputLeftElement
+          h={"100%"}
           position={"absolute"}
           left="1.6%"
           pointerEvents="none"
@@ -28,16 +32,16 @@ const FieldSearchComponent: ForwardRefRenderFunction<
           <BsSearch color="black" />
         </InputLeftElement>
         <Input
-          pl="70px !important"
+          pl="55px !important"
           borderRadius={"24px"}
           h="45px"
           w="100%"
           backgroundColor={"#FFFF"}
+          color={colorMode === "light" ? "gray.900" : "gray.900"}
           placeholder="Search"
           ref={ref}
           {...props}
         />
-        ;
       </InputGroup>
     </Stack>
   );

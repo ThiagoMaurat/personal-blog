@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
@@ -30,7 +30,7 @@ export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
       flexBasis={{ base: "100%", md: "auto" }}
-      w="50%"
+      w="55%"
     >
       <Flex
         gap={6}
@@ -75,9 +75,9 @@ export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
             Blog
           </Link>
         </Flex>
-        <Box>
+        <HStack justify={"center"}>
           <ToggleButtonDarkMode />
-        </Box>
+        </HStack>
       </Flex>
     </Box>
   );

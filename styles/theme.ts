@@ -36,7 +36,6 @@ export const theme: ThemeConfig = extendTheme({
       },
       "a, Link": {
         textDecoration: "none",
-        color: "unset",
         fontFamily: `'Montserrat', sans-serif`,
       },
       li: {
