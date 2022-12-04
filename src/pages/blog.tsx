@@ -1,4 +1,4 @@
-import { AspectRatio, Box } from "@chakra-ui/react";
+import { AspectRatio, Box, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { Image, Text } from "@chakra-ui/react";
 import React from "react";
@@ -28,7 +28,15 @@ export default function BlogPage() {
           backgroundPosition={"center center"}
         />
       </Box>
-      <FieldSearch name="fieldsearch" />
+      <Flex
+        w="100%"
+        alignItems={"center"}
+        justifyContent={"center"}
+        position={"relative"}
+        bottom="30px"
+      >
+        <FieldSearch name="fieldsearch" />
+      </Flex>
     </>
   );
 }

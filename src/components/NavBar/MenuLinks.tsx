@@ -1,8 +1,9 @@
-import { Box, Stack, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, Stack, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import { useCallback } from "react";
+import ToggleButtonDarkMode from "../ToogleButtonDarkMode";
 
 type MenuLinksProps = {
   isOpen: boolean;
@@ -29,51 +30,55 @@ export const MenuLinks = ({ isOpen, isLoading }: MenuLinksProps) => {
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
       flexBasis={{ base: "100%", md: "auto" }}
+      w="50%"
     >
-      <Stack
-        spacing={16}
+      <Flex
+        gap={6}
         align={"center"}
-        justify={["center", "space-between", "flex-end", "flex-end"]}
+        justify={["center", "space-between"]}
         direction={["column", "column", "row", "row"]}
         pt={[8, 8, 0, 0]}
-        w="100%"
-        fontWeight="normal"
         color={colorMode === "dark" ? "whiteAlpha.900" : "gray.900"}
       >
-        <Link
-          href={"/"}
-          style={
-            CheckRouterMatchesLabel("Home")
-              ? {
-                  borderBottom: "1px solid #35A5F5",
-                  borderBottomWidth: "3px",
-                  color: "gray.300",
-                  fontWeight: "600",
-                }
-              : undefined
-          }
-          className={styles.linkMenu}
-        >
-          Home
-        </Link>
+        <Flex gap={8} align={"center"} flexDir={{ base: "column", md: "row" }}>
+          <Link
+            href={"/"}
+            style={
+              CheckRouterMatchesLabel("Home")
+                ? {
+                    borderBottom: "1px solid #35A5F5",
+                    borderBottomWidth: "3px",
+                    color: "gray.300",
+                    fontWeight: "600",
+                  }
+                : undefined
+            }
+            className={styles.linkMenu}
+          >
+            Home
+          </Link>
 
-        <Link
-          href={"/blog"}
-          style={
-            CheckRouterMatchesLabel("Blog")
-              ? {
-                  borderBottom: "1px solid #35A5F5",
-                  borderBottomWidth: "3px",
-                  color: "gray.300",
-                  fontWeight: "600",
-                }
-              : undefined
-          }
-          className={styles.linkMenu}
-        >
-          Blog
-        </Link>
-      </Stack>
+          <Link
+            href={"/blog"}
+            style={
+              CheckRouterMatchesLabel("Blog")
+                ? {
+                    borderBottom: "1px solid #35A5F5",
+                    borderBottomWidth: "3px",
+                    color: "gray.300",
+                    fontWeight: "600",
+                  }
+                : undefined
+            }
+            className={styles.linkMenu}
+          >
+            Blog
+          </Link>
+        </Flex>
+        <Box>
+          <ToggleButtonDarkMode />
+        </Box>
+      </Flex>
     </Box>
   );
 };

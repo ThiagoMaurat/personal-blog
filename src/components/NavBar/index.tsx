@@ -1,7 +1,7 @@
 import { Text, FlexProps, useColorMode, Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ToogleButtomDarkMode from "../ToogleButtonDarkMode";
+import ToggleButtonDarkMode from "../ToogleButtonDarkMode";
 import { MenuLinks } from "./MenuLinks";
 import { MenuToggle } from "./MenuToggle";
 import { NavBarContainer } from "./NavBarContainer";
@@ -20,7 +20,7 @@ export const NavBar = ({ isLoading, ...props }: NavBarProps) => {
     <NavBarContainer {...props}>
       <Text
         fontWeight={"bold"}
-        fontSize="1.8rem"
+        fontSize="1.7rem"
         color={colorMode === "light" ? "gray.900" : "#FFFF"}
         cursor="pointer"
         onClick={() => push("/")}
@@ -29,9 +29,6 @@ export const NavBar = ({ isLoading, ...props }: NavBarProps) => {
       </Text>
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} />
-      <Box>
-        <ToogleButtomDarkMode />
-      </Box>
     </NavBarContainer>
   );
 };

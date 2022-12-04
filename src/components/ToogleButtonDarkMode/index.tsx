@@ -2,7 +2,7 @@ import { useColorMode } from "@chakra-ui/react";
 import React, { useMemo } from "react";
 import DarkModeToggle from "react-dark-mode-toggle";
 
-export default function ToogleButtomDarkMode() {
+export default function ToggleButtonDarkMode() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const toggleDarkMode = useMemo((): boolean | undefined => {

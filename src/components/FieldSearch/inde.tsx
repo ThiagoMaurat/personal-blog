@@ -17,7 +17,7 @@ const FieldSearchComponent: ForwardRefRenderFunction<
   FieldSearchComponentProps
 > = (props, ref) => {
   return (
-    <Stack>
+    <Stack w="300px">
       <InputGroup>
         <InputLeftElement
           position={"absolute"}
@@ -25,13 +25,14 @@ const FieldSearchComponent: ForwardRefRenderFunction<
           pointerEvents="none"
           fontSize="1.2em"
         >
-          <BsSearch />
+          <BsSearch color="black" />
         </InputLeftElement>
         <Input
           pl="70px !important"
           borderRadius={"24px"}
-          h="50px"
-          w="35%"
+          h="45px"
+          w="100%"
+          backgroundColor={"#FFFF"}
           placeholder="Search"
           ref={ref}
           {...props}
