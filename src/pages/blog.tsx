@@ -4,6 +4,7 @@ import { Image, Text } from "@chakra-ui/react";
 import React from "react";
 import { Header } from "../components/Header";
 import bgImg from "../../public/blog.png";
+import { FieldSearch } from "../components/FieldSearch/inde";
 
 export default function BlogPage() {
   return (
@@ -27,8 +28,7 @@ export default function BlogPage() {
           backgroundPosition={"center center"}
         />
       </Box>
-
-      <Text> as</Text>
+      <FieldSearch name="fieldsearch" />
     </>
   );
 }

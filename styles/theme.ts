@@ -22,9 +22,6 @@ export const theme: ThemeConfig = extendTheme({
         padding: "0",
         boxSizing: "border-box",
       },
-      /* body: {
-        backgroundColor: "#272727",
-      }, */
       p: {
         fontFamily: `'Montserrat', sans-serif`,
       },
