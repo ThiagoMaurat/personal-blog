@@ -1,12 +1,16 @@
-import { AspectRatio, Box, Flex } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { Image, Text } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import { Header } from "../components/Header";
-import bgImg from "../../public/blog.png";
 import { FieldSearch } from "../components/FieldSearch/inde";
+import { supabase } from "../lib/initSupabase";
 
 export default function BlogPage() {
+  const fetcch = async () => {
+    const { data: posts, error } = await supabase.from("posts").select("*");
+    console.log(posts);
+  };
+  fetcch();
+
   return (
     <>
       <Header />
