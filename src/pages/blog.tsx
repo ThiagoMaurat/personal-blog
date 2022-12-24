@@ -2,15 +2,21 @@ import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import { Header } from "../components/Header";
 import { FieldSearch } from "../components/FieldSearch/inde";
-import { supabase } from "../lib/initSupabase";
+import { useFetchAllPosts } from "../queries/use-fetch-all-post";
+import { useFetchAllThemes } from "../queries/use-fetch-all-themes";
 
 export default function BlogPage() {
-  const fetcch = async () => {
-    const { data: posts, error } = await supabase.from("posts").select("*");
-    console.log(posts);
-  };
-  fetcch();
-
+  const {
+    data: allPostsData,
+    error: allPostsError,
+    isFetching: allPostsIsFetching,
+  } = useFetchAllPosts();
+  const {
+    data: allthemesData,
+    error: allthemesError,
+    isFetched: allthemesIsFetched,
+  } = useFetchAllThemes();
+  console.log(allthemesData);
   return (
     <>
       <Header />
