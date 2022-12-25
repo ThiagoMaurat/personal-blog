@@ -12,6 +12,10 @@ export const theme: ThemeConfig = extendTheme({
       500: "#595B83",
       900: "#333456",
     },
+    blue: {
+      300: "#40ADF4",
+      800: "#00006f",
+    },
   },
   useSystemColorMode: true,
   components: {},

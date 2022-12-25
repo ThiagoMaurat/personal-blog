@@ -1,13 +1,13 @@
-import { Button } from "@chakra-ui/react";
-import React from "react";
+import { Button, ButtonProps } from "@chakra-ui/react";
+import React, { forwardRef, ForwardRefRenderFunction } from "react";
 
-interface ButtonThemeProps {
-  content: string;
-}
+type ButtonThemeProps = {} & ButtonProps;
 
-function ButtonTheme(props: ButtonThemeProps) {
-  const { content } = props;
-  return <Button>{content}</Button>;
-}
+const ButtonChakra: ForwardRefRenderFunction<
+  HTMLButtonElement,
+  ButtonThemeProps
+> = (props, ref) => {
+  return <Button {...props} ref={ref} />;
+};
 
-export default ButtonTheme;
+export const ButtonTheme = forwardRef(ButtonChakra);
