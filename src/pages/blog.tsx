@@ -24,12 +24,10 @@ interface ThemeData {
       thumbnail: {
         id: number;
         thumbnail_url: string;
-        width: number;
-        height: number;
       };
       theme: {
         id: number;
-        thumbnail_url: string;
+        theme: string;
       };
       title: string | null;
       author: string | null;
@@ -77,13 +75,18 @@ export default function BlogPage(themesData: ThemeData) {
         })}
 
       {!themesData.allPosts.error && (
-        <SimpleGrid gap={"1rem"} columns={{ base: 2, md: 3 }}>
+        <SimpleGrid
+          mx={{ base: "1rem", sm: "0px" }}
+          justifyItems={"center"}
+          gap={"3rem"}
+          columns={{ base: 1, md: 2, xl: 3 }}
+        >
           {themesData.allPosts.data?.map((posts, index) => {
             return (
               <Card
                 key={`card-posts${index}`}
                 image={posts.thumbnail.thumbnail_url!}
-                theme={posts.theme.thumbnail_url}
+                theme={posts.theme.theme}
                 title={posts.title ?? "Front-End Developer Blog"}
                 description={posts.description ?? "Saiba mais sobre a matéria."}
                 author={posts.author ?? "Thiago Maurat"}
@@ -91,8 +94,6 @@ export default function BlogPage(themesData: ThemeData) {
                   new Date(posts.created_at),
                   "dd-MM-yyyy, 'às' HH:mm."
                 )}
-                width={posts.thumbnail.width}
-                height={posts.thumbnail.height}
               />
             );
           })}
@@ -111,7 +112,7 @@ export const getStaticProps: GetStaticProps = async () => {
     .from("posts")
     .select(
       `author, title, content, created_at, description, id,
-          thumbnail:thumbnails(id, thumbnail_url, width, height),
+          thumbnail:thumbnails(id, thumbnail_url),
           theme:themes(id, theme)`
     );
 

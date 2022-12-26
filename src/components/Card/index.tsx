@@ -1,11 +1,4 @@
-import {
-  AspectRatio,
-  Avatar,
-  Flex,
-  HStack,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { Avatar, Flex, HStack, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
 interface CardProps {
@@ -15,18 +8,19 @@ interface CardProps {
   description: string;
   author: string;
   date: string;
-  width: number;
-  height: number;
 }
 
 export function Card(props: CardProps) {
-  const { author, date, description, image, height, width, theme, title } =
-    props;
+  const { author, date, description, image, theme, title } = props;
   return (
-    <Flex gap="1rem" cursor={"pointer"} flexDir="column">
-      <AspectRatio ratio={height / width} w="350px" h="350px">
-        <Image src={image} alt="post card section" />
-      </AspectRatio>
+    <Flex maxW="360px" w="100%" gap="1rem" cursor={"pointer"} flexDir="column">
+      <Image
+        w="360px"
+        borderRadius={"15px"}
+        h="250px"
+        src={image}
+        alt="post containd section"
+      />
 
       <Text color={"blue.300"} fontSize="1rem">
         {theme}
@@ -45,7 +39,7 @@ export function Card(props: CardProps) {
           name="Thiago Maurat"
           src="https://avatars.githubusercontent.com/u/76444984?v=4"
         />
-        <Flex flexDir={"column"} gap="1rem">
+        <Flex flexDir={"column"} gap="2px">
           <Text color={"blue.800"} fontSize="0.9rem">
             {author}
           </Text>

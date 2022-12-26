@@ -13,20 +13,14 @@ export interface Database {
         Row: {
           id: number;
           image_url: string | null;
-          width: number | null;
-          height: number | null;
         };
         Insert: {
           id?: number;
           image_url?: string | null;
-          width?: number | null;
-          height?: number | null;
         };
         Update: {
           id?: number;
           image_url?: string | null;
-          width?: number | null;
-          height?: number | null;
         };
       };
       posts: {
@@ -82,20 +76,14 @@ export interface Database {
         Row: {
           id: number;
           thumbnail_url: string | null;
-          width: number | null;
-          height: number | null;
         };
         Insert: {
           id?: number;
           thumbnail_url?: string | null;
-          width?: number | null;
-          height?: number | null;
         };
         Update: {
           id?: number;
           thumbnail_url?: string | null;
-          width?: number | null;
-          height?: number | null;
         };
       };
     };
