@@ -9,20 +9,6 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      images: {
-        Row: {
-          id: number;
-          image_url: string | null;
-        };
-        Insert: {
-          id?: number;
-          image_url?: string | null;
-        };
-        Update: {
-          id?: number;
-          image_url?: string | null;
-        };
-      };
       posts: {
         Row: {
           id: number;

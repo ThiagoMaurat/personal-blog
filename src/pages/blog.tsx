@@ -9,6 +9,8 @@ import { PostgrestError } from "@supabase/supabase-js";
 import { Card } from "../components/Card";
 import { Limiter } from "../components/Limiter";
 import { format } from "date-fns";
+import FirstCard from "../components/FirstCard";
+import { last } from "lodash";
 
 interface ThemeData {
   allThemes: {
@@ -40,7 +42,7 @@ interface ThemeData {
 }
 
 export default function BlogPage(themesData: ThemeData) {
-  console.log(themesData);
+  /* console.log(themesData?.allPosts.data.at(-1)); */
 
   return (
     <Limiter>
@@ -64,6 +66,24 @@ export default function BlogPage(themesData: ThemeData) {
       >
         <FieldSearch name="fieldsearch" />
       </Flex>
+
+      {!themesData.allThemes.error &&
+        themesData.allPosts.data &&
+        [last(themesData.allPosts.data)].map((lastItem) => {
+          if (lastItem) {
+            return (
+              <FirstCard
+                key={"1"}
+                thumbnail={lastItem.thumbnail.thumbnail_url}
+                theme={lastItem.theme.theme}
+                title={lastItem.title ?? ""}
+                description={lastItem.description ?? ""}
+                author={lastItem.author ?? "Thiago Maurat"}
+                date={lastItem.created_at}
+              />
+            );
+          }
+        })}
 
       {!themesData.allThemes.error &&
         themesData.allThemes.data?.map((themes, index) => {
