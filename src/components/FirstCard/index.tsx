@@ -21,36 +21,36 @@ interface FirstCardProps {
 function FirstCard(props: FirstCardProps) {
   const { author, date, description, thumbnail, theme, title } = props;
   return (
-    <Grid gridTemplateColumns={"1fr, 1fr"} gap="1.5rem">
+    <Grid gridTemplateColumns={'1fr 1fr'} gap="2rem">
       <GridItem>
         <Image
-          borderRadius={"15px"}
+          borderRadius={"3xl"}
           h="40vh"
           alt="last-post-thumbnail"
           src={thumbnail}
         />
       </GridItem>
 
-      <GridItem flexDirection={"column"}>
-        <Text color={"blue.300"} fontSize="1rem">
+      <GridItem py="15px" display={'flex'} flexDirection={"column"} gap="1rem">
+        <Text fontWeight={'500'} color={"blue.300"} fontSize="1.2rem">
           {theme}
         </Text>
 
-        <Text color={"blue.800"} fontSize="1.2rem">
+        <Text fontWeight="bold" color="darkblue.700" fontSize="1.5rem">
           {title}
         </Text>
 
-        <Text color={"gray.900"} fontSize="1.2rem">
+        <Text color={"gray.600"} fontWeight="600" fontSize="0.9rem">
           {description}
         </Text>
 
-        <HStack gap={"1rem"}>
+        <HStack gap={"0.5rem"}>
           <Avatar
             name="Thiago Maurat"
             src="https://avatars.githubusercontent.com/u/76444984?v=4"
           />
           <Flex flexDir={"column"} gap="2px">
-            <Text color={"blue.800"} fontSize="0.9rem">
+            <Text fontWeight="bold" color="darkblue.700" fontSize="0.8rem">
               {author}
             </Text>
             <Text color={"gray.900"} fontSize="0.7rem">

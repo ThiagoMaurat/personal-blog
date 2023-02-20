@@ -67,32 +67,39 @@ export default function BlogPage(themesData: ThemeData) {
         <FieldSearch name="fieldsearch" />
       </Flex>
 
-      {!themesData.allThemes.error &&
-        themesData.allPosts.data &&
-        [last(themesData.allPosts.data)].map((lastItem) => {
-          if (lastItem) {
+      <Flex gap={'0.5rem'} justifyContent="center">
+        {!themesData.allThemes.error &&
+          themesData.allThemes.data?.map((themes, index) => {
             return (
-              <FirstCard
-                key={"1"}
-                thumbnail={lastItem.thumbnail.thumbnail_url}
-                theme={lastItem.theme.theme}
-                title={lastItem.title ?? ""}
-                description={lastItem.description ?? ""}
-                author={lastItem.author ?? "Thiago Maurat"}
-                date={lastItem.created_at}
-              />
+              <ButtonTheme key={`themesButton-${index}`}>
+                {themes.theme}
+              </ButtonTheme>
             );
-          }
-        })}
+          })}
+      </Flex>
 
-      {!themesData.allThemes.error &&
-        themesData.allThemes.data?.map((themes, index) => {
-          return (
-            <ButtonTheme key={`themesButton-${index}`}>
-              {themes.theme}
-            </ButtonTheme>
-          );
-        })}
+      <Flex my="2rem">
+        {!themesData.allThemes.error &&
+          themesData.allPosts.data &&
+          [last(themesData.allPosts.data)].map((lastItem) => {
+            if (lastItem) {
+              return (
+                <FirstCard
+                  key={"1"}
+                  thumbnail={lastItem.thumbnail.thumbnail_url}
+                  theme={lastItem.theme.theme}
+                  title={lastItem.title ?? ""}
+                  description={lastItem.description ?? ""}
+                  author={lastItem.author ?? "Thiago Maurat"}
+                  date={format(new Date(lastItem.created_at), "dd-MM-yyyy, 'às' HH:mm.")}
+                />
+              );
+            }
+          })}
+      </Flex>
+
+
+
 
       {!themesData.allPosts.error && (
         <SimpleGrid

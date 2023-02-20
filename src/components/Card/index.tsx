@@ -22,25 +22,25 @@ export function Card(props: CardProps) {
         alt="post containd section"
       />
 
-      <Text color={"blue.300"} fontSize="1rem">
+      <Text fontWeight={'500'} color={"blue.300"} fontSize="1.2rem">
         {theme}
       </Text>
 
-      <Text color={"blue.800"} fontSize="1.2rem">
+      <Text fontWeight="bold" color="darkblue.700" fontSize="1.5rem">
         {title}
       </Text>
 
-      <Text color={"gray.900"} fontSize="1.2rem">
+      <Text color={"gray.600"} fontWeight="600" fontSize="0.9rem">
         {description}
       </Text>
 
-      <HStack gap={"1rem"}>
+      <HStack gap={"0.5rem"}>
         <Avatar
           name="Thiago Maurat"
           src="https://avatars.githubusercontent.com/u/76444984?v=4"
         />
         <Flex flexDir={"column"} gap="2px">
-          <Text color={"blue.800"} fontSize="0.9rem">
+          <Text fontWeight="bold" color="darkblue.700" fontSize="0.8rem">
             {author}
           </Text>
           <Text color={"gray.900"} fontSize="0.7rem">

@@ -9,7 +9,7 @@ type LimiterProps = {
 export const Limiter = (props: LimiterProps) => {
   const { children, ...rest } = props;
   return (
-    <Box maxW="1200px" w="full" mx="auto" {...rest}>
+    <Box px="1rem" maxW="1200px" w="full" mx="auto" {...rest}>
       {children}
     </Box>
   );
