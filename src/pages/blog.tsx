@@ -9,8 +9,9 @@ import { Card } from "../components/Card";
 import { Limiter } from "../components/Limiter";
 import { format } from "date-fns";
 import FirstCard from "../components/FirstCard";
-import { last, orderBy } from "lodash";
+import { debounce, last, orderBy } from "lodash";
 import { ThemeData } from "../@types/types";
+import { useSearchPost } from "../queries/use-fetch-post-by-input";
 
 export default function BlogPage(themesData: ThemeData) {
   const orderedData = useMemo(() => {
@@ -18,12 +19,34 @@ export default function BlogPage(themesData: ThemeData) {
   }, [themesData.allPosts]);
 
   const [loadedPosts, setLoadedPosts] = useState(6);
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
 
   const visiblePosts = orderedData.slice(0, loadedPosts);
 
   const loadMorePosts = useCallback(() => {
     setLoadedPosts((prev) => prev + 6);
   }, []);
+
+  const debouncedSearch = React.useMemo(
+    () =>
+      debounce((val) => {
+        setQuery(val);
+      }, 1500),
+    [setQuery]
+  );
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearch(e.target.value);
+      debouncedSearch(e.target.value);
+    },
+    [debouncedSearch]
+  );
+
+  const { data: searchData } = useSearchPost({
+    search: query.length > 3 ? query : undefined,
+  });
 
   return (
     <Limiter>
@@ -45,7 +68,11 @@ export default function BlogPage(themesData: ThemeData) {
         position={"relative"}
         bottom="30px"
       >
-        <FieldSearch name="fieldsearch" />
+        <FieldSearch
+          name="fieldsearch"
+          onChange={handleChange}
+          value={search}
+        />
       </Flex>
 
       <Flex gap={"0.5rem"} justifyContent="center">
@@ -59,8 +86,9 @@ export default function BlogPage(themesData: ThemeData) {
           })}
       </Flex>
 
-      <Flex my="2rem">
+      <Flex my="2rem" display={{ base: "none", lg: "flex" }}>
         {!themesData.allPosts.error &&
+          !(search.length > 3) &&
           [last(themesData?.allPosts?.data)].map((lastItem) => {
             if (lastItem) {
               return (
@@ -81,13 +109,14 @@ export default function BlogPage(themesData: ThemeData) {
           })}
       </Flex>
 
-      {!themesData.allPosts.error && (
+      {!themesData.allPosts.error && !(search.length > 3) && (
         <SimpleGrid
           mx={{ base: "1rem", sm: "0px" }}
           justifyItems={"center"}
           gap={"3rem"}
           columns={{ base: 1, md: 2, xl: 3 }}
           mb="2rem"
+          mt={{ base: "2rem", lg: "none" }}
         >
           {visiblePosts?.map((posts, index) => {
             return (
@@ -108,7 +137,38 @@ export default function BlogPage(themesData: ThemeData) {
         </SimpleGrid>
       )}
 
-      {loadedPosts < orderedData.length && (
+      {!themesData.allPosts.error && search.length > 3 && (
+        <SimpleGrid
+          mx={{ base: "1rem", sm: "0px" }}
+          justifyItems={"center"}
+          gap={"3rem"}
+          columns={{ base: 1, md: 2, xl: 3 }}
+          mb="2rem"
+          mt={{ base: "2rem", lg: "none" }}
+        >
+          {searchData &&
+            searchData?.map((posts, index) => {
+              return (
+                <Card
+                  key={`card-posts${index}`}
+                  image={posts.thumbnail.thumbnail_url}
+                  theme={posts.theme.theme}
+                  title={posts.title ?? "Front-End Developer Blog"}
+                  description={
+                    posts.description ?? "Saiba mais sobre a matéria."
+                  }
+                  author={posts.author ?? "Thiago Maurat"}
+                  date={format(
+                    new Date(posts.created_at),
+                    "dd-MM-yyyy, 'às' HH:mm."
+                  )}
+                />
+              );
+            })}
+        </SimpleGrid>
+      )}
+
+      {loadedPosts < orderedData.length && !(search.length > 3) && (
         <HStack justifyContent={"center"} my="2rem">
           <ButtonTheme onClick={loadMorePosts}>Carregar mais</ButtonTheme>
         </HStack>

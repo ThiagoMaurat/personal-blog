@@ -38,7 +38,7 @@ const FieldSearchComponent: ForwardRefRenderFunction<
           w="100%"
           backgroundColor={"#FFFF"}
           color={colorMode === "light" ? "gray.900" : "gray.900"}
-          placeholder="Search"
+          placeholder="Search (mínimo 3 caracteres)"
           ref={ref}
           {...props}
         />
