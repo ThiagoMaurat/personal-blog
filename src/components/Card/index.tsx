@@ -20,9 +20,10 @@ export function Card(props: CardProps) {
         h="250px"
         src={image}
         alt="post containd section"
+        objectFit="cover"
       />
 
-      <Text fontWeight={'500'} color={"blue.300"} fontSize="1.2rem">
+      <Text fontWeight={"500"} color={"blue.300"} fontSize="1.2rem">
         {theme}
       </Text>
 

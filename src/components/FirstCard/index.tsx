@@ -21,18 +21,19 @@ interface FirstCardProps {
 function FirstCard(props: FirstCardProps) {
   const { author, date, description, thumbnail, theme, title } = props;
   return (
-    <Grid gridTemplateColumns={'1fr 1fr'} gap="2rem">
+    <Grid gridTemplateColumns={"1fr 1fr"} gap="2rem">
       <GridItem>
         <Image
           borderRadius={"3xl"}
           h="40vh"
           alt="last-post-thumbnail"
           src={thumbnail}
+          objectFit="cover"
         />
       </GridItem>
 
-      <GridItem py="15px" display={'flex'} flexDirection={"column"} gap="1rem">
-        <Text fontWeight={'500'} color={"blue.300"} fontSize="1.2rem">
+      <GridItem py="15px" display={"flex"} flexDirection={"column"} gap="1rem">
+        <Text fontWeight={"500"} color={"blue.300"} fontSize="1.2rem">
           {theme}
         </Text>
 

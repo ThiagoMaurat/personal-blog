@@ -9,13 +9,13 @@ import { Card } from "../components/Card";
 import { Limiter } from "../components/Limiter";
 import { format } from "date-fns";
 import FirstCard from "../components/FirstCard";
-import { debounce, last, orderBy } from "lodash";
+import { debounce, last, orderBy, tail } from "lodash";
 import { ThemeData } from "../@types/types";
 import { useSearchPost } from "../queries/use-fetch-post-by-input";
 
 export default function BlogPage(themesData: ThemeData) {
   const orderedData = useMemo(() => {
-    return orderBy(themesData.allPosts.data, "created_at");
+    return tail(orderBy(themesData.allPosts.data, "created_at", "desc"));
   }, [themesData.allPosts]);
 
   const [loadedPosts, setLoadedPosts] = useState(6);
