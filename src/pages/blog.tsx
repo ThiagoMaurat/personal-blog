@@ -99,6 +99,7 @@ export default function BlogPage(themesData: ThemeData) {
                   title={lastItem.title ?? ""}
                   description={lastItem.description ?? ""}
                   author={lastItem.author ?? "Thiago Maurat"}
+                  href={`/post/${lastItem.id}`}
                   date={format(
                     new Date(lastItem.created_at),
                     "dd-MM-yyyy, 'às' HH:mm."
@@ -131,6 +132,7 @@ export default function BlogPage(themesData: ThemeData) {
                   new Date(posts.created_at),
                   "dd-MM-yyyy, 'às' HH:mm."
                 )}
+                href={`/post/${posts.id}`}
               />
             );
           })}
@@ -162,6 +164,7 @@ export default function BlogPage(themesData: ThemeData) {
                     new Date(posts.created_at),
                     "dd-MM-yyyy, 'às' HH:mm."
                   )}
+                  href={`/post/${posts.id}`}
                 />
               );
             })}
