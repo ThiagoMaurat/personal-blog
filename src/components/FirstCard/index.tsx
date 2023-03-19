@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
+import { letterCounter } from "../../helpers/charactersCount";
 
 interface FirstCardProps {
   thumbnail: string;
@@ -50,7 +51,7 @@ function FirstCard(props: FirstCardProps) {
           </Text>
 
           <Text color={"gray.600"} fontWeight="600" fontSize="0.9rem">
-            {description}
+            {letterCounter(description, 300)}
           </Text>
 
           <HStack gap={"0.5rem"}>

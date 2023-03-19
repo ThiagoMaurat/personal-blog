@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
@@ -46,6 +46,13 @@ export default function Posts({ data }: Props) {
             style={{ borderRadius: "15px" }}
           />
         </Flex>
+
+        <Box
+          px={"2rem"}
+          mt="2rem"
+          mx="0 auto"
+          dangerouslySetInnerHTML={{ __html: data.content }}
+        ></Box>
 
         <Footer />
       </Limiter>
