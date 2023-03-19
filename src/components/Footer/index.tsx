@@ -3,6 +3,7 @@ import {
   GridItem,
   Heading,
   HStack,
+  Input,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -65,13 +66,14 @@ export const Footer = () => {
           </VStack>
         </GridItem>
 
-        <GridItem display={"flex"} flexDir="column" gap="2rem">
+        <GridItem display={"flex"} flexDir="column" gap="1rem">
           <Heading fontWeight={"bold"} fontSize="1.7rem" color={"gray.900"}>
             NewsLetter
           </Heading>
 
           <Text
             fontWeight={"500"}
+            mt="1rem"
             fontSize="1rem"
             color={"gray.700"}
             whiteSpace={"break-spaces"}
@@ -79,17 +81,13 @@ export const Footer = () => {
             {`Inscreva-se em nossa newsletter! Fique por dentro das últimas novidades do mundo dev.`}
           </Text>
 
-          {/* <HStack
-            as="a"
-            href={`mailto:maysarodolfo@hotmail.com`}
-            aria-label="Write Email"
-          >
-            <FaPen fontSize="1rem" color="black" />
-
-            <Text fontWeight={"500"} fontSize="1rem" color={"gray.700"}>
-              thiagomaurat@hotmail.com
-            </Text>
-          </HStack> */}
+          <Input
+            placeholder="E-mail"
+            borderRadius={"full"}
+            _placeholder={{ color: "gray.400" }}
+            _focus={{ border: "1px" }}
+            border="2px solid black"
+          />
         </GridItem>
 
         <GridItem display={"flex"} flexDir="column" gap="2rem">
