@@ -13,7 +13,6 @@ export const NavBarContainer = ({
   return (
     <Flex
       bg={colorMode === "dark" ? "gray.900" : "#FFFF"}
-      px="1rem"
       position="sticky"
       w={"full"}
       zIndex="999"
