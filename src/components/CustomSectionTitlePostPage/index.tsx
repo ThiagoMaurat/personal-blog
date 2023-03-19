@@ -28,9 +28,9 @@ export const CustomSectionTitlePostPage = (
       {...rest}
     >
       <VStack
-        flexWrap={"wrap"}
         minW={"162px"}
         align="flex-start"
+        textAlign={{ base: "center", md: "unset" }}
         overflow="hidden"
         w="100%"
         maxW={{ base: "100%", md: "70%" }}
@@ -56,7 +56,11 @@ export const CustomSectionTitlePostPage = (
         </Heading>
       </VStack>
 
-      <HStack gap={"0.5rem"} h="100%" placeSelf={"center"}>
+      <HStack
+        gap={"0.5rem"}
+        h="100%"
+        placeSelf={{ base: "center", md: "flex-start" }}
+      >
         <Avatar
           name="Thiago Maurat"
           src="https://avatars.githubusercontent.com/u/76444984?v=4"
