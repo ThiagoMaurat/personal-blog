@@ -10,10 +10,10 @@ export interface Post {
     id: number;
     theme: string;
   };
-  title: string | null;
-  author: string | null;
-  content: string | null;
-  description: string | null;
+  title: string;
+  author: string;
+  content: string;
+  description: string;
   created_at: string;
 }
 

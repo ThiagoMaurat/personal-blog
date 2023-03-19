@@ -10,20 +10,15 @@ import { Limiter } from "../components/Limiter";
 import { format } from "date-fns";
 import FirstCard from "../components/FirstCard";
 import { debounce, last, orderBy, tail } from "lodash";
-import {
-  PostData,
-  ThemeAndPostData,
-  ThemeAndPostDataNextSSR,
-  ThemeData,
-} from "../@types/DataPost";
+import { PostData, ThemeAndPostData, ThemeData } from "../@types/DataPost";
 import { useSearchPost } from "../queries/use-fetch-post-by-input";
 import { Footer } from "../components/Footer";
 
-export default function BlogPage(themesData: ThemeAndPostData) {
-  console.log(themesData);
+export default function BlogPage(data: ThemeAndPostData) {
+  console.log(data);
   const orderedData = useMemo(() => {
-    return tail(orderBy(themesData.allPosts.data, "created_at", "desc"));
-  }, [themesData.allPosts]);
+    return tail(orderBy(data.allPosts.data, "created_at", "desc"));
+  }, [data.allPosts]);
 
   const [loadedPosts, setLoadedPosts] = useState(6);
   const [search, setSearch] = useState("");
@@ -83,8 +78,8 @@ export default function BlogPage(themesData: ThemeAndPostData) {
       </Flex>
 
       <Flex gap={"0.5rem"} justifyContent="center">
-        {!themesData.allThemes.error &&
-          themesData?.allThemes?.data?.map((themes, index) => {
+        {!data.allThemes.error &&
+          data?.allThemes?.data?.map((themes, index) => {
             return (
               <ButtonTheme key={`themesButton-${index}`}>
                 {themes.theme}
@@ -94,9 +89,9 @@ export default function BlogPage(themesData: ThemeAndPostData) {
       </Flex>
 
       <Flex my="2rem" display={{ base: "none", lg: "flex" }}>
-        {!themesData.allPosts.error &&
+        {!data.allPosts.error &&
           !(search.length > 3) &&
-          [last(themesData?.allPosts?.data)].map((lastItem) => {
+          [last(data?.allPosts?.data)].map((lastItem) => {
             if (lastItem) {
               return (
                 <FirstCard
@@ -117,7 +112,7 @@ export default function BlogPage(themesData: ThemeAndPostData) {
           })}
       </Flex>
 
-      {!themesData.allPosts.error && !(search.length > 3) && (
+      {!data.allPosts.error && !(search.length > 3) && (
         <SimpleGrid
           mx={{ base: "1rem", sm: "0px" }}
           justifyItems={"center"}
@@ -146,7 +141,7 @@ export default function BlogPage(themesData: ThemeAndPostData) {
         </SimpleGrid>
       )}
 
-      {!themesData.allPosts.error && search.length > 3 && (
+      {!data.allPosts.error && search.length > 3 && (
         <SimpleGrid
           mx={{ base: "1rem", sm: "0px" }}
           justifyItems={"center"}
