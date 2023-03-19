@@ -15,12 +15,14 @@ export const MenuToggle = ({ toggle, isOpen }: MenuToggleProps) => {
       {isOpen ? (
         <IoClose
           fontSize={"1.5rem"}
+          cursor={"pointer"}
           color={colorMode === "light" ? "#333456" : "white"}
         />
       ) : (
         <MdOutlineMenu
           color={colorMode === "light" ? "#333456" : "white"}
           fontSize={"1.5rem"}
+          cursor={"pointer"}
         />
       )}
     </Box>

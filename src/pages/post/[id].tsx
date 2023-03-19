@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React from "react";
@@ -17,11 +18,21 @@ export default function Posts({ data }: Props) {
 
         <CustomSectionTitlePostPage
           theme={data.theme.theme ?? "Sem tema"}
-          title={data.title ?? "Sem título"}
-          date={data.created_at ?? "Sem data"}
+          title={
+            "ASASAASASASASASASASASASASASASASASASAASASASASASASASASASASASASAS" ??
+            "Sem título"
+          }
+          date={format(Date.parse(data.created_at), "dd-MM-yyyy") ?? "Sem data"}
           author={data.author ?? "Sem autor"}
-          minH="30vh"
+          minH="35vh"
+          h="auto"
           borderRadius={"3xl"}
+          justifyContent={{ base: "unset", md: "space-around" }}
+          alignItems={{ base: "center", md: "flex-start" }}
+          pt={{ base: "1rem", md: "3rem" }}
+          px={{ base: "1rem", md: "2rem" }}
+          mx={"0 auto"}
+          gap={{ base: "1rem", md: "1.5rem" }}
         >
           <h2>{JSON.stringify(data)}</h2>
         </CustomSectionTitlePostPage>
