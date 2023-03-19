@@ -34,17 +34,30 @@ export const CustomSectionTitlePostPage = (
         align="flex-start"
         overflow="hidden"
         w="100%"
+        maxW={{ base: "100%", md: "70%" }}
       >
-        <Text fontWeight={"500"} color={"blue.300"} fontSize="1.2rem" w="100%">
+        <Text
+          fontWeight={"500"}
+          color={"blue.300"}
+          fontSize="1.2rem"
+          maxW={{ base: "100%", md: "70%" }}
+          w="100%"
+        >
           {theme}
         </Text>
 
-        <Heading w="100%" fontSize={"3xl"} as={"h1"} color="whiteAlpha.900">
+        <Heading
+          w="100%"
+          maxW={{ base: "100%", md: "70%" }}
+          fontSize={"3xl"}
+          as={"h1"}
+          color="whiteAlpha.900"
+        >
           {title}
         </Heading>
       </VStack>
 
-      <HStack gap={"0.5rem"}>
+      <HStack gap={"0.5rem"} h="100%" placeSelf={"center"}>
         <Avatar
           name="Thiago Maurat"
           src="https://avatars.githubusercontent.com/u/76444984?v=4"

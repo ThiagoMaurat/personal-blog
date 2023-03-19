@@ -27,12 +27,13 @@ export default function Posts({ data }: Props) {
           minH="35vh"
           h="auto"
           borderRadius={"3xl"}
-          justifyContent={{ base: "unset", md: "space-around" }}
+          justifyContent={{ base: "unset", md: "space-evenly" }}
           alignItems={{ base: "center", md: "flex-start" }}
           pt={{ base: "1rem", md: "3rem" }}
-          px={{ base: "1rem", md: "2rem" }}
+          pb="120px"
+          px={{ base: "2rem", md: "2rem" }}
           mx={"0 auto"}
-          gap={{ base: "1rem", md: "1.5rem" }}
+          gap={{ base: "1.5rem", md: "2rem" }}
         >
           <h2>{JSON.stringify(data)}</h2>
         </CustomSectionTitlePostPage>
