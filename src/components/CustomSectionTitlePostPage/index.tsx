@@ -33,25 +33,13 @@ export const CustomSectionTitlePostPage = (
         textAlign={{ base: "center", md: "unset" }}
         overflow="hidden"
         w="100%"
-        maxW={{ base: "100%", md: "70%" }}
+        maxW={{ base: "100%", md: "60%" }}
       >
-        <Text
-          fontWeight={"500"}
-          color={"blue.300"}
-          fontSize="1.2rem"
-          maxW={{ base: "100%", md: "70%" }}
-          w="100%"
-        >
+        <Text fontWeight={"500"} color={"blue.300"} fontSize="1.2rem" w="100%">
           {theme}
         </Text>
 
-        <Heading
-          w="100%"
-          maxW={{ base: "100%", md: "70%" }}
-          fontSize={"3xl"}
-          as={"h1"}
-          color="whiteAlpha.900"
-        >
+        <Heading w="100%" fontSize={"3xl"} as={"h1"} color="whiteAlpha.900">
           {title}
         </Heading>
       </VStack>

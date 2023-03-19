@@ -23,13 +23,13 @@ export default function Posts({ data }: Props) {
           title={data.title ?? "Sem título"}
           date={format(Date.parse(data.created_at), "dd-MM-yyyy") ?? "Sem data"}
           author={data.author ?? "Sem autor"}
-          minH="35vh"
+          minH="30vh"
           h="auto"
           borderRadius={"3xl"}
           justifyContent={{ base: "unset", md: "space-evenly" }}
           alignItems={{ base: "center", md: "flex-start" }}
           pt={{ base: "1rem", md: "3rem" }}
-          pb="120px"
+          pb="80px"
           px={{ base: "2rem", md: "2rem" }}
           mx={"0 auto"}
           gap={{ base: "1.5rem", md: "2rem" }}
@@ -37,7 +37,7 @@ export default function Posts({ data }: Props) {
           <h2>{JSON.stringify(data)}</h2>
         </CustomSectionTitlePostPage>
 
-        <Flex mt="-6rem" justifyContent={"center"} w="100%">
+        <Flex mt="-4rem" justifyContent={"center"} w="100%">
           <Image
             width={700}
             height={500}
