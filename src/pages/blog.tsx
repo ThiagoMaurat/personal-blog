@@ -10,11 +10,17 @@ import { Limiter } from "../components/Limiter";
 import { format } from "date-fns";
 import FirstCard from "../components/FirstCard";
 import { debounce, last, orderBy, tail } from "lodash";
-import { ThemeData } from "../@types/types";
+import {
+  PostData,
+  ThemeAndPostData,
+  ThemeAndPostDataNextSSR,
+  ThemeData,
+} from "../@types/DataPost";
 import { useSearchPost } from "../queries/use-fetch-post-by-input";
 import { Footer } from "../components/Footer";
 
-export default function BlogPage(themesData: ThemeData) {
+export default function BlogPage(themesData: ThemeAndPostData) {
+  console.log(themesData);
   const orderedData = useMemo(() => {
     return tail(orderBy(themesData.allPosts.data, "created_at", "desc"));
   }, [themesData.allPosts]);
@@ -183,20 +189,20 @@ export default function BlogPage(themesData: ThemeData) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<ThemeAndPostData> = async () => {
   // fetch all data on server (revalidate) and paginate on front
 
-  const { data: themesData, error: themesError } = await supabase
+  const { data: themesData, error: themesError } = (await supabase
     .from("themes")
-    .select("id, theme");
+    .select("id, theme")) as ThemeData;
 
-  const { data: postsData, error: postsError } = await supabase
+  const { data: postsData, error: postsError } = (await supabase
     .from("posts")
     .select(
       `author, title, content, created_at, description, id,
           thumbnail:thumbnails(id, thumbnail_url),
           theme:themes(id, theme)`
-    );
+    )) as PostData;
 
   return {
     props: {
