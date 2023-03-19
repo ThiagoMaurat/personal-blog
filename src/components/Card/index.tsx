@@ -1,5 +1,6 @@
-import { Avatar, Flex, HStack, Image, Text } from "@chakra-ui/react";
+import { Avatar, Flex, HStack, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 interface CardProps {
@@ -23,14 +24,14 @@ export function Card(props: CardProps) {
         cursor={"pointer"}
         flexDir="column"
       >
-        <Image
-          w="360px"
-          borderRadius={"15px"}
-          h="250px"
-          src={image}
-          alt="post containd section"
-          objectFit="cover"
-        />
+        <Flex position={"relative"} width={360} height={250}>
+          <Image
+            style={{ borderRadius: "15px" }}
+            src={image}
+            alt="image all posts"
+            fill
+          />
+        </Flex>
 
         <Text fontWeight={"500"} color={"blue.300"} fontSize="1.2rem">
           {theme}

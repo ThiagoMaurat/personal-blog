@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
@@ -20,10 +20,7 @@ export default function Posts({ data }: Props) {
 
         <CustomSectionTitlePostPage
           theme={data.theme.theme ?? "Sem tema"}
-          title={
-            "ASASAASASASASASASASASASASASASASASASAASASASASASASASASASASASASAS" ??
-            "Sem título"
-          }
+          title={data.title ?? "Sem título"}
           date={format(Date.parse(data.created_at), "dd-MM-yyyy") ?? "Sem data"}
           author={data.author ?? "Sem autor"}
           minH="35vh"
