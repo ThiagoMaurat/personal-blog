@@ -12,6 +12,7 @@ import FirstCard from "../components/FirstCard";
 import { debounce, last, orderBy, tail } from "lodash";
 import { ThemeData } from "../@types/types";
 import { useSearchPost } from "../queries/use-fetch-post-by-input";
+import { Footer } from "../components/Footer";
 
 export default function BlogPage(themesData: ThemeData) {
   const orderedData = useMemo(() => {
@@ -176,6 +177,8 @@ export default function BlogPage(themesData: ThemeData) {
           <ButtonTheme onClick={loadMorePosts}>Carregar mais</ButtonTheme>
         </HStack>
       )}
+
+      <Footer />
     </Limiter>
   );
 }
