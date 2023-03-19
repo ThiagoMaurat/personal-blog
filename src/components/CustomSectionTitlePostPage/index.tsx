@@ -7,7 +7,6 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
-import { Limiter } from "../Limiter";
 import { Text } from "@chakra-ui/react";
 
 interface CustomSectionTitlePostPage extends FlexProps {

@@ -1,6 +1,8 @@
+import { Box, Flex } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { GetStaticProps } from "next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import Image from "next/image";
 import React from "react";
 import { PostData } from "../../@types/DataPost";
 import { Props } from "../../@types/ServerSide";
@@ -37,6 +39,17 @@ export default function Posts({ data }: Props) {
         >
           <h2>{JSON.stringify(data)}</h2>
         </CustomSectionTitlePostPage>
+
+        <Flex mt="-6rem" justifyContent={"center"} w="100%">
+          <Image
+            width={700}
+            height={500}
+            src={data.thumbnail.thumbnail_url}
+            alt={"post blog image"}
+            style={{ borderRadius: "15px" }}
+          />
+        </Flex>
+
         <Footer />
       </Limiter>
     );

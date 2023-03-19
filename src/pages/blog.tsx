@@ -15,7 +15,6 @@ import { useSearchPost } from "../queries/use-fetch-post-by-input";
 import { Footer } from "../components/Footer";
 
 export default function BlogPage(data: ThemeAndPostData) {
-  console.log(data);
   const orderedData = useMemo(() => {
     return tail(orderBy(data.allPosts.data, "created_at", "desc"));
   }, [data.allPosts]);
