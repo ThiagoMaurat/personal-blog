@@ -1,39 +1,19 @@
 import {
-  Box,
   Grid,
   GridItem,
   Heading,
   HStack,
   Text,
-  TextProps,
   VStack,
 } from "@chakra-ui/react";
 import { FaPen } from "react-icons/fa";
 import React from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { TfiBackRight } from "react-icons/tfi";
-
-interface NavIndicesProps extends TextProps {
-  text: string;
-}
+import { NavIndices } from "./NavIndicces";
+import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
 
 export const Footer = () => {
   const { push } = useRouter();
-
-  const NavIndices = ({ text }: NavIndicesProps): JSX.Element => {
-    return (
-      <Link href={""}>
-        <Text
-          fontWeight={"500"}
-          color={"gray.700"}
-          _hover={{ color: "#35A5F5" }}
-        >
-          {text}
-        </Text>
-      </Link>
-    );
-  };
 
   return (
     <>
@@ -72,16 +52,16 @@ export const Footer = () => {
         <GridItem
           display={"flex"}
           flexDir="column"
-          alignItems={{ base: "unset", md: "center" }}
+          alignItems={{ base: "unset", lg: "center" }}
         >
           <Heading fontWeight={"bold"} fontSize="1.7rem" color={"gray.900"}>
             Início
           </Heading>
 
           <VStack mt="2rem" align={"flex-start"} justify="flex-start">
-            <NavIndices text="Topic #1" />
-            <NavIndices text="Topic #2" />
-            <NavIndices text="Topic #3" />
+            <NavIndices isExternal={false} href="" text="Topic #1" />
+            <NavIndices isExternal={false} href="" text="Topic #2" />
+            <NavIndices isExternal={false} href="" text="Topic #3" />
           </VStack>
         </GridItem>
 
@@ -117,19 +97,38 @@ export const Footer = () => {
             Contato
           </Heading>
 
-          {/* <HStack
-            as="a"
-            href={`mailto:maysarodolfo@hotmail.com`}
-            aria-label="Write Email"
-          >
-            <FaPen fontSize="1rem" color="black" />
+          <VStack align={"flex-start"} spacing="4px">
+            <NavIndices
+              href="https://github.com/ThiagoMaurat"
+              LeftIcon={BsGithub}
+              text="Git-hub"
+              isExternal={true}
+            />
 
-            <Text fontWeight={"500"} fontSize="1rem" color={"gray.700"}>
-              thiagomaurat@hotmail.com
-            </Text>
-          </HStack> */}
+            <NavIndices
+              href="mailto:thiagomaurat@hotmail.com"
+              LeftIcon={FaPen}
+              text="E-mail"
+              isExternal
+            />
+
+            <NavIndices
+              href="https://www.facebook.com/thiago.maurat"
+              LeftIcon={BsFacebook}
+              text="Facebook"
+              isExternal
+            />
+
+            <NavIndices
+              href="https://twitter.com/Thiago_Maurat"
+              LeftIcon={BsTwitter}
+              text="Twitter"
+              isExternal
+            />
+          </VStack>
         </GridItem>
       </Grid>
+
       <HStack my="2rem" justifyContent={"center"}>
         <Text
           fontWeight={"500"}

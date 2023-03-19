@@ -173,7 +173,7 @@ export default function BlogPage(themesData: ThemeData) {
       )}
 
       {loadedPosts < orderedData.length && !(search.length > 3) && (
-        <HStack justifyContent={"center"} my="2rem">
+        <HStack justifyContent={"center"} mt="3rem">
           <ButtonTheme onClick={loadMorePosts}>Carregar mais</ButtonTheme>
         </HStack>
       )}
