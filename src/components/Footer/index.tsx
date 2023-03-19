@@ -1,20 +1,27 @@
 import {
+  Box,
   Grid,
   GridItem,
   Heading,
   HStack,
+  IconButton,
   Input,
+  InputGroup,
+  InputRightElement,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import { FaPen } from "react-icons/fa";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { NavIndices } from "./NavIndicces";
 import { BsFacebook, BsGithub, BsTwitter } from "react-icons/bs";
+import { MdArrowForward } from "react-icons/md";
 
 export const Footer = () => {
   const { push } = useRouter();
+
+  const [newsletterInput, setNewsletterInput] = useState("");
 
   return (
     <>
@@ -81,13 +88,28 @@ export const Footer = () => {
             {`Inscreva-se em nossa newsletter! Fique por dentro das últimas novidades do mundo dev.`}
           </Text>
 
-          <Input
-            placeholder="E-mail"
-            borderRadius={"full"}
-            _placeholder={{ color: "gray.400" }}
-            _focus={{ border: "1px" }}
-            border="2px solid black"
-          />
+          <InputGroup>
+            <Input
+              placeholder="E-mail"
+              borderRadius={"full"}
+              type="input"
+              _placeholder={{ color: "gray.400" }}
+              value={newsletterInput}
+              onChange={(e) => setNewsletterInput(e.target.value)}
+            />
+
+            <InputRightElement>
+              <IconButton
+                mr="0.5rem"
+                backgroundColor={"inherit"}
+                _hover={{ backgroundColor: "inherit" }}
+                _active={{ backgroundColor: "inherit" }}
+                aria-label="Enviar"
+                icon={<MdArrowForward />}
+                onClick={() => console.log("asd")}
+              />
+            </InputRightElement>
+          </InputGroup>
         </GridItem>
 
         <GridItem display={"flex"} flexDir="column" gap="2rem">
