@@ -1,8 +1,9 @@
 import { PostgrestError } from "@supabase/supabase-js";
 import { ParsedUrlQuery } from "querystring";
+import { Post } from "./DataPost";
 
 export type Props = {
-  data: any;
+  data: Post | undefined;
   error: PostgrestError | null;
 };
 
