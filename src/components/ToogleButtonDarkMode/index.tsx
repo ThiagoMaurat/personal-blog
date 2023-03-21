@@ -17,7 +17,7 @@ export default function ToggleButtonDarkMode() {
     <DarkModeToggle
       onChange={toggleColorMode}
       checked={toggleDarkMode}
-      size={60}
+      size={61}
     />
   );
 }
